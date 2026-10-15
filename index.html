@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website Hosting</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            color: #222;
+            text-align: center;
+        }
+        header {
+            background: #173b70;
+            color: white;
+            padding: 30px 15px;
+        }
+        main {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #0002;
+        }
+        button {
+            padding: 12px 22px;
+            background: #1769e0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        footer {
+            padding: 20px;
+            background: #173b70;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Static Website Hosting</h1>
+        <p>Basics of Cloud Computing Mini Project</p>
+    </header>
+
+    <main>
+        <h2>Welcome to My Website!</h2>
+        <p>This website demonstrates static website hosting
+        using GitHub Pages.</p>
+
+        <h3>Project Information</h3>
+        <p><b>Technology:</b> HTML and CSS</p>
+        <p><b>Hosting Platform:</b> GitHub Pages</p>
+
+        <button onclick="showMessage()">Click Here</button>
+        <p id="message"></p>
+    </main>
+
+    <footer>
+        <p>Cloud Computing Mini Project</p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").textContent =
+                "Welcome! My website is working successfully.";
+        }
+    </script>
+</body>
+</html>
