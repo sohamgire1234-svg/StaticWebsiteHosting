@@ -2,73 +2,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Website Hosting</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f0f4f8;
-            color: #222;
-            text-align: center;
-        }
-        header {
-            background: #173b70;
-            color: white;
-            padding: 30px 15px;
-        }
-        main {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px #0002;
-        }
-        button {
-            padding: 12px 22px;
-            background: #1769e0;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        footer {
-            padding: 20px;
-            background: #173b70;
-            color: white;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudNova | Static Website Hosting</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+:root{--bg:#080d1c;--card:#111a30;--blue:#58c7ff;--purple:#a78bfa;--text:#f4f7ff;--muted:#a5b1ca}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 8%;border-bottom:1px solid #ffffff12;position:sticky;top:0;background:#080d1ceF;backdrop-filter:blur(15px);z-index:10}
+.logo{font-size:23px;font-weight:800;letter-spacing:-1px}
+.logo span{color:var(--blue)}
+.links{display:flex;gap:25px;color:var(--muted);font-size:14px}
+.links a:hover{color:var(--blue)}
+.btn{display:inline-block;padding:12px 21px;border-radius:9px;background:linear-gradient(110deg,#39baff,#8b79ff);color:#071020;font-weight:700;border:0;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #58c7ff44}
+.hero{min-height:610px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px;padding:80px 8%;overflow:hidden}
+.tag{display:inline-block;border:1px solid #58c7ff55;color:var(--blue);padding:6px 13px;border-radius:30px;font-size:12px;letter-spacing:1px;margin-bottom:22px}
+h1{font-size:clamp(42px,5.5vw,72px);line-height:1.1;letter-spacing:-2px;margin-bottom:22px}
+.gradient{background:linear-gradient(100deg,#58c7ff,#b69aff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:530px;margin-bottom:30px}
+.hero-buttons{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.text-link{color:#dce6ff;font-size:14px}
+.visual{position:relative;display:grid;place-items:center;min-height:350px}
+.orb{width:260px;height:260px;border-radius:50%;display:grid;place-items:center;font-size:105px;background:radial-gradient(circle at 35% 25%,#4ad8ff,#6556db 48%,#121b40 76%);box-shadow:0 0 70px #4b8dff44, inset -15px -20px 45px #090d22;animation:float 4s ease-in-out infinite}
+.orb:after{content:"";position:absolute;width:320px;height:320px;border:1px solid #58c7ff44;border-radius:50%;transform:rotateX(65deg)}
+.float-card{position:absolute;padding:13px 17px;background:#151f38eF;border:1px solid #ffffff20;border-radius:13px;box-shadow:0 12px 35px #0005;font-size:13px}
+.float-card strong{display:block;color:var(--blue);font-size:17px}
+.fc1{top:30px;right:0}.fc2{bottom:32px;left:0}
+@keyframes float{50%{transform:translateY(-12px)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:28px 8%;background:#ffffff05;border-top:1px solid #ffffff10;border-bottom:1px solid #ffffff10;text-align:center}
+.stats strong{display:block;font-size:25px;color:var(--blue)}
+.stats span{font-size:13px;color:var(--muted)}
+section{padding:85px 8%}
+.section-head{text-align:center;max-width:680px;margin:0 auto 42px}
+.section-head h2{font-size:clamp(29px,4vw,43px);line-height:1.2;margin-bottom:12px}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:linear-gradient(145deg,#131e35,#0d1427);border:1px solid #ffffff12;border-radius:17px;padding:27px;transition:.25s}
+.card:hover{transform:translateY(-6px);border-color:#58c7ff77}
+.icon{font-size:30px;margin-bottom:16px}
+.card h3{margin-bottom:9px;font-size:19px}
+.card p{font-size:14px;color:var(--muted)}
+.arch{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.arch div{background:#131e35;border:1px solid #58c7ff44;padding:16px 22px;border-radius:12px;text-align:center}
+.arch span{color:var(--blue);font-size:23px}
+.arch b{display:block;font-size:14px}
+.arch small{color:var(--muted)}
+.arrow{color:var(--purple);font-size:24px}
+.cta{margin:10px 8% 80px;padding:55px 25px;text-align:center;border:1px solid #58c7ff44;border-radius:24px;background:radial-gradient(ellipse at top,#26366b,#10162b 65%);box-shadow:0 0 70px #527dff10}
+.cta h2{font-size:clamp(27px,4vw,40px);margin-bottom:10px}
+.cta p{color:var(--muted);margin-bottom:24px}
+footer{padding:28px 8%;border-top:1px solid #ffffff12;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+footer b{color:var(--blue)}
+@media(max-width:760px){
+ nav{padding:17px 5%}.links{gap:12px}.links a:nth-child(2),.links a:nth-child(3){display:none}
+ .hero{grid-template-columns:1fr;padding:65px 6%;text-align:center}.hero p{margin-left:auto;margin-right:auto}
+ .hero-buttons{justify-content:center}.visual{min-height:300px}.orb{width:205px;height:205px;font-size:80px}.orb:after{width:250px;height:250px}
+ .fc1{right:0}.fc2{left:0}.stats{padding:25px 4%;gap:8px}.stats strong{font-size:20px}
+ section{padding:65px 6%}.cards{grid-template-columns:1fr}.cta{margin:0 5% 55px;padding:40px 18px}
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Static Website Hosting</h1>
-        <p>Basics of Cloud Computing Mini Project</p>
-    </header>
 
-    <main>
-        <h2>Welcome to My Website!</h2>
-        <p>This website demonstrates static website hosting
-        using GitHub Pages.</p>
+<nav>
+  <a href="#home" class="logo">☁ Cloud<span>Nova</span></a>
+  <div class="links">
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#architecture">Architecture</a>
+  </div>
+  <a href="#about" class="btn">Explore ↗</a>
+</nav>
 
-        <h3>Project Information</h3>
-        <p><b>Technology:</b> HTML and CSS</p>
-        <p><b>Hosting Platform:</b> GitHub Pages</p>
+<header class="hero" id="home">
+  <div>
+    <div class="tag">✦ BASICS OF CLOUD COMPUTING</div>
+    <h1>Your website.<br>Your vision.<br><span class="gradient">In the cloud.</span></h1>
+    <p>Discover the power of static website hosting. Learn how websites become accessible across the world using modern cloud technology.</p>
+    <div class="hero-buttons">
+      <a href="#features" class="btn">Explore Technology ↗</a>
+      <a href="#architecture" class="text-link">How it works ↓</a>
+    </div>
+  </div>
+  <div class="visual">
+    <div class="orb">☁</div>
+    <div class="float-card fc1">⚡ Fast &amp; lightweight<strong>Static Hosting</strong></div>
+    <div class="float-card fc2">🌐 Global access<strong>Available online</strong></div>
+  </div>
+</header>
 
-        <button onclick="showMessage()">Click Here</button>
-        <p id="message"></p>
-    </main>
+<div class="stats">
+  <div><strong>24/7</strong><span>Online access*</span></div>
+  <div><strong>HTML + CSS</strong><span>Core technologies</span></div>
+  <div><strong>GitHub Pages</strong><span>Hosting platform</span></div>
+</div>
 
-    <footer>
-        <p>Cloud Computing Mini Project</p>
-    </footer>
+<section id="features">
+  <div class="section-head">
+    <div class="tag">WHY CLOUD HOSTING?</div>
+    <h2>Small project. <span class="gradient">Big possibilities.</span></h2>
+    <p>Static hosting makes it simple to publish websites without managing a traditional web server.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="icon">🚀</div>
+      <h3>Simple Deployment</h3>
+      <p>Publish your HTML, CSS and JavaScript files to the web through a straightforward workflow.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🌍</div>
+      <h3>Access Anywhere</h3>
+      <p>Share a public website link so people can visit your project from supported devices around the world.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🔒</div>
+      <h3>HTTPS Support</h3>
+      <p>GitHub Pages supports HTTPS to help protect connections between visitors and your published website.</p>
+    </article>
+    <article class="card">
+      <div class="icon">💻</div>
+      <h3>Developer Friendly</h3>
+      <p>Store your code in a GitHub repository and track changes as your project improves.</p>
+    </article>
+    <article class="card">
+      <div class="icon">📱</div>
+      <h3>Responsive Design</h3>
+      <p>This demo adapts its layout for phones, tablets and desktop screens.</p>
+    </article>
+    <article class="card">
+      <div class="icon">💡</div>
+      <h3>Learn by Building</h3>
+      <p>Understand how frontend files and web hosting work together in a practical cloud computing project.</p>
+    </article>
+  </div>
+</section>
 
-    <script>
-        function showMessage() {
-            document.getElementById("message").textContent =
-                "Welcome! My website is working successfully.";
-        }
-    </script>
+<section id="architecture">
+  <div class="section-head">
+    <div class="tag">THE PROCESS</div>
+    <h2>From code to <span class="gradient">the cloud.</span></h2>
+    <p>See the basic steps involved in publishing a static website.</p>
+  </div>
+  <div class="arch">
+    <div><span>🧑‍💻</span><b>Your Code</b><small>HTML / CSS / JS</small></div>
+    <span class="arrow">→</span>
+    <div><span>📦</span><b>GitHub Repo</b><small>Store your files</small></div>
+    <span class="arrow">→</span>
+    <div><span>☁️</span><b>GitHub Pages</b><small>Publish the site</small></div>
+    <span class="arrow">→</span>
+    <div><span>🌐</span><b>Visitors</b><small>Open the website</small></div>
+  </div>
+</section>
+
+<div class="cta" id="about">
+  <div class="tag">YOUR CLOUD JOURNEY STARTS HERE</div>
+  <h2>Built for learning. <span class="gradient">Made for the web.</span></h2>
+  <p>This is a student mini project demonstrating static website hosting.</p>
+  <button class="btn" onclick="showMessage()">Test Website Interaction ✨</button>
+  <p id="message" role="status" style="margin-top:18px;margin-bottom:0"></p>
+</div>
+
+<footer>
+  <div>☁ <b>CloudNova</b> · Static Website Hosting</div>
+  <div>Basics of Cloud Computing · Student Mini Project</div>
+  <div>Designed with HTML, CSS &amp; JavaScript</div>
+</footer>
+
+<script>
+function showMessage(){
+ document.getElementById("message").textContent =
+ "🎉 Success! Your website interaction is working correctly.";
+}
+</script>
 </body>
 </html>
