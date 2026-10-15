@@ -2,306 +2,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Computing Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudHost | Static Website Hosting</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+:root {
+  --bg: #f4f7ff;
+  --card: #ffffff;
+  --text: #172554;
+  --muted: #526078;
+  --primary: #2563eb;
+  --border: #dbe5f5;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
-            color: #263238;
-            line-height: 1.6;
-        }
+body.dark {
+  --bg: #0b1220;
+  --card: #172033;
+  --text: #f1f5f9;
+  --muted: #c0cbe0;
+  --primary: #60a5fa;
+  --border: #334155;
+}
 
-        header {
-            background: #174a7e;
-            color: white;
-            padding: 18px 8%;
-        }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        nav h2 {
-            margin: 0;
-            font-size: 23px;
-        }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+  line-height: 1.6;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 18px;
-            font-size: 14px;
-        }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 7%;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
 
-        .hero {
-            background: #e5eff9;
-            padding: 65px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 35px;
-        }
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+}
 
-        .hero-content {
-            max-width: 580px;
-        }
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            line-height: 1.2;
-            color: #174a7e;
-            margin: 0 0 18px;
-        }
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+}
 
-        .hero p {
-            color: #4e5d6c;
-            font-size: 16px;
-        }
+nav a:hover {
+  color: var(--primary);
+}
 
-        .hero img {
-            width: 290px;
-            max-width: 100%;
-            border-radius: 10px;
-        }
+button, .btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 14px;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 11px 20px;
-            background: #174a7e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
+button:hover, .btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
 
-        .button:hover {
-            background: #10365d;
-        }
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 75px 7%;
+}
 
-        section {
-            padding: 48px 8%;
-        }
+.tag {
+  color: var(--primary);
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 28px;
-        }
+.hero h1 {
+  font-size: clamp(36px, 5vw, 55px);
+  line-height: 1.15;
+  margin: 16px 0;
+}
 
-        .section-title h2 {
-            color: #174a7e;
-            margin-bottom: 8px;
-        }
+p {
+  color: var(--muted);
+}
 
-        .section-title p {
-            color: #65717d;
-        }
+.hero p {
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.hero img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px #0002;
+}
 
-        .card {
-            background: white;
-            padding: 24px;
-            border: 1px solid #e0e5eb;
-            border-radius: 8px;
-        }
+section {
+  padding: 60px 7%;
+  scroll-margin-top: 20px;
+}
 
-        .card h3 {
-            color: #174a7e;
-            margin-top: 0;
-        }
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
 
-        .card p {
-            color: #596773;
-            font-size: 15px;
-        }
+.section-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
 
-        .steps {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            max-width: 850px;
-            margin: auto;
-            border: 1px solid #e0e5eb;
-        }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
 
-        .steps li {
-            margin-bottom: 12px;
-        }
+.card {
+  background: var(--card);
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: 0.25s;
+}
 
-        .project {
-            text-align: center;
-            background: #e5eff9;
-        }
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px #0001;
+}
 
-        #message {
-            color: #174a7e;
-            font-weight: bold;
-        }
+.emoji {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
 
-        footer {
-            background: #17354f;
-            color: white;
-            text-align: center;
-            padding: 22px 8%;
-            font-size: 14px;
-        }
+.card h3 {
+  margin-bottom: 10px;
+}
 
-        @media (max-width: 700px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 45px 6%;
-            }
+.card p {
+  line-height: 1.7;
+  font-size: 14px;
+}
 
-            .hero h1 {
-                font-size: 33px;
-            }
+.steps {
+  max-width: 800px;
+  margin: auto;
+}
 
-            nav {
-                justify-content: center;
-            }
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
 
-            nav a {
-                margin: 0 7px;
-            }
+.number {
+  min-width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
+.info {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 850px;
+  margin: auto;
+}
 
-            section {
-                padding: 38px 6%;
-            }
-        }
-    </style>
+.info p {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.info p:last-child {
+  border-bottom: none;
+}
+
+.demo {
+  max-width: 750px;
+  margin: auto;
+  padding: 35px;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.demo p {
+  margin: 12px 0 20px;
+}
+
+#message {
+  color: var(--primary);
+  font-weight: bold;
+  margin-top: 20px;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  text-align: center;
+  padding: 28px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+}
+
+footer p {
+  font-size: 14px;
+  margin: 5px;
+}
+
+@media (max-width: 800px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 45px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 27px;
+  }
+
+  section {
+    padding: 45px 6%;
+  }
+
+  .hero {
+    padding: 45px 6%;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <nav>
-        <h2>Cloud Computing</h2>
-        <div>
-            <a href="#home">Home</a>
-            <a href="#features">Features</a>
-            <a href="#working">How It Works</a>
-        </div>
-    </nav>
+  <div class="logo">☁ CloudHost</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#hosting">Hosting</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <button id="themeBtn" onclick="toggleTheme()">
+    🌙 Dark Mode
+  </button>
 </header>
 
-<div class="hero" id="home">
-    <div class="hero-content">
-        <p><b>COLLEGE MINI PROJECT</b></p>
+<main>
 
-        <h1>Static Website Hosting</h1>
+<section class="hero" id="home">
+  <div>
+    <span class="tag">BASICS OF CLOUD COMPUTING</span>
 
-        <p>
-            Welcome to my cloud computing project. This website
-            explains how a static website can be published online
-            using GitHub Pages.
-        </p>
+    <h1>Static Website Hosting</h1>
 
-        <a href="#features" class="button">Explore Project</a>
-    </div>
+    <p>
+      Discover how to host a website on the internet using
+      HTML, CSS, JavaScript and GitHub Pages. Build your
+      website, publish it online and share it with the world.
+    </p>
 
-    <img
-        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80"
-        alt="Earth and digital network connections">
-</div>
+    <a href="#hosting" class="btn">Explore Hosting →</a>
+    <a href="#features" class="btn"
+       style="margin-left:8px;background:transparent;color:var(--primary);border:1px solid var(--primary)">
+       Learn More
+    </a>
+  </div>
+
+  <img
+    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80"
+    alt="Digital world and cloud computing technology">
+</section>
 
 <section id="features">
-    <div class="section-title">
-        <h2>About the Project</h2>
-        <p>Understanding the basics of hosting a website on the internet.</p>
+  <h2 class="section-title">Website Features</h2>
+
+  <p class="section-intro">
+    Explore the technologies, tools and advantages of static website hosting.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">☁️</div>
+      <h3>Cloud Hosting</h3>
+      <p>
+        Hosting makes a website accessible online without
+        running a personal computer as a web server.
+      </p>
     </div>
 
-    <div class="cards">
-        <div class="card">
-            <h3>01. What is Cloud Hosting?</h3>
-            <p>
-                Cloud hosting allows website files to be stored
-                on internet-connected infrastructure and accessed
-                by users through a web browser.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>02. Technologies Used</h3>
-            <p>
-                HTML is used for the structure, CSS for the design,
-                and JavaScript for simple interactive features.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>03. Why GitHub Pages?</h3>
-            <p>
-                GitHub Pages provides a convenient way to publish
-                static websites directly from a GitHub repository.
-            </p>
-        </div>
+    <div class="card">
+      <div class="emoji">💻</div>
+      <h3>Web Technologies</h3>
+      <p>
+        HTML creates the structure, CSS designs the layout,
+        and JavaScript adds interactive features.
+      </p>
     </div>
+
+    <div class="card">
+      <div class="emoji">🚀</div>
+      <h3>GitHub Pages</h3>
+      <p>
+        GitHub Pages publishes supported static website
+        files from a GitHub repository.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">📱</div>
+      <h3>Responsive Design</h3>
+      <p>
+        The website adapts to mobile phones, tablets
+        and desktop computers.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔒</div>
+      <h3>HTTPS Support</h3>
+      <p>
+        HTTPS protects information sent between a visitor's
+        browser and the website.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <h3>Fast and Simple</h3>
+      <p>
+        Static websites can load efficiently because
+        they do not require server-side processing.
+      </p>
+    </div>
+  </div>
 </section>
 
-<section id="working">
-    <div class="section-title">
-        <h2>How Does It Work?</h2>
-        <p>The basic process used to publish this website.</p>
+<section id="hosting">
+  <h2 class="section-title">How Hosting Works</h2>
+
+  <p class="section-intro">
+    Follow these four steps to publish a static website.
+  </p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="number">1</div>
+      <div>
+        <h3>Create Website Files</h3>
+        <p>Write the website using HTML, CSS and JavaScript.</p>
+      </div>
     </div>
 
-    <div class="steps">
-        <ol>
-            <li>Create the website using HTML, CSS and JavaScript.</li>
-            <li>Upload the website files to a GitHub repository.</li>
-            <li>Enable GitHub Pages in the repository settings.</li>
-            <li>Wait for deployment to finish.</li>
-            <li>Open and share the published website link.</li>
-        </ol>
+    <div class="step">
+      <div class="number">2</div>
+      <div>
+        <h3>Upload to GitHub</h3>
+        <p>Create a repository and upload your index.html file.</p>
+      </div>
     </div>
+
+    <div class="step">
+      <div class="number">3</div>
+      <div>
+        <h3>Enable GitHub Pages</h3>
+        <p>Open Settings → Pages, select the main branch and root folder, and save.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="number">4</div>
+      <div>
+        <h3>Visit Your Website</h3>
+        <p>After deployment, open the live link and share it with others.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="project">
-    <div class="section-title">
-        <h2>Try the Website</h2>
-        <p>Click the button to test the JavaScript functionality.</p>
+<section id="about">
+  <h2 class="section-title">About This Project</h2>
 
-        <button class="button" onclick="showMessage()">
-            Test Website
-        </button>
+  <p class="section-intro">
+    A student project designed to explain the fundamentals of cloud computing.
+  </p>
 
-        <p id="message"></p>
-    </div>
+  <div class="info">
+    <p><strong>Project Title:</strong> Static Website Hosting</p>
+    <p><strong>Subject:</strong> Basics of Cloud Computing</p>
+    <p><strong>Frontend:</strong> HTML, CSS and JavaScript</p>
+    <p><strong>Hosting Platform:</strong> GitHub Pages</p>
+    <p><strong>Objective:</strong> To understand how a static website
+      is created, published and accessed through the internet.</p>
+  </div>
 </section>
+
+<section id="demo">
+  <h2 class="section-title">Interactive Demo</h2>
+
+  <p class="section-intro">
+    Click the buttons below to test the website's JavaScript.
+  </p>
+
+  <div class="demo">
+    <h3>Welcome to CloudHost!</h3>
+
+    <p>Ready to explore cloud computing?</p>
+
+    <button onclick="showMessage()">Test Website</button>
+
+    <button onclick="showDate()" style="margin-left:8px">
+      Show Date & Time
+    </button>
+
+    <div id="message" aria-live="polite"></div>
+  </div>
+</section>
+
+</main>
 
 <footer>
-    <p>Static Website Hosting | Basics of Cloud Computing</p>
-    <p>Student Mini Project · Built using HTML, CSS and JavaScript</p>
+  <p><strong>☁ CloudHost</strong></p>
+  <p>Static Website Hosting | Basics of Cloud Computing</p>
+  <p>Learning • Building • Hosting</p>
+  <p>© 2026 CloudHost Project</p>
 </footer>
 
 <script>
-    function showMessage() {
-        document.getElementById("message").textContent =
-            "Success! The website is working correctly.";
-    }
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const darkMode = document.body.classList.contains("dark");
+
+  document.getElementById("themeBtn").textContent =
+    darkMode ? "☀️ Light Mode" : "🌙 Dark Mode";
+}
+
+function showMessage() {
+  document.getElementById("message").textContent =
+    "✅ Success! Your website JavaScript is working correctly.";
+}
+
+function showDate() {
+  document.getElementById("message").textContent =
+    "Current date and time: " + new Date().toLocaleString();
+}
 </script>
 
 </body>
